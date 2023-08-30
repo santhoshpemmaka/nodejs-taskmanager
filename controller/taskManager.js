@@ -29,7 +29,6 @@ exports.postTaskController = async(req,res,next) => {
             throw errors;
         }
         const task = await taskManager.findOne({title : title});
-        console.log("task",task);
         if(task){
             const errors = new Error("title is already exists");
             errors.statusCode = 400;
@@ -44,7 +43,6 @@ exports.postTaskController = async(req,res,next) => {
         })
     }
     catch(err){
-        console.log("error",err);
         res.status(err.statusCode || 500).json({
             message : err.message
         })
