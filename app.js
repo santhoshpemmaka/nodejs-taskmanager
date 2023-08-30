@@ -8,7 +8,7 @@ const app = express();
 const databaseUrl = process.env.DATABASE_URL;
 app.use(bodyParsed.json());
 app.use('/task-manager',taskRoutes);
-
+mongoose.set("strictQuery", false);
 mongoose.connect(databaseUrl)
 .then(result => {
     const server = app.listen(8080);
