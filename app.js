@@ -1,10 +1,13 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParsed = require('body-parser');
+const cors = require('cors');
+
 require('dotenv').config();
 const taskRoutes = require('./router/taskManager');
 
 const app = express();
+app.use(cors())
 const databaseUrl = process.env.DATABASE_URL;
 app.use(bodyParsed.json());
 app.use('/task-manager',taskRoutes);
